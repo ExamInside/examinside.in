@@ -1,0 +1,6 @@
+{
+  "name": "Class10to12ExmLeaker",
+  "description": "Professional UP Board Education dashboard for Class 10th & 12th authored by M.PK, featuring Hindi/English medium, 6 subjects per class, 400+ MCQs, Important Questions, Biographies, and 4 Years Solved Papers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
