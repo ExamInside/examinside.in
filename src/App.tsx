@@ -57,6 +57,7 @@ import {
   upsertBiographyInPack,
   upsertImportantQuestionInPack,
 } from './utils/syllabusPackManager';
+import AdBanner320x50 from "./components/AdBanner320x50";
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -495,6 +496,7 @@ export default function App() {
         isOwnerUnlocked={isOwnerAdmin}
         onTriggerOwnerAdmin={handleOpenSecretAdmin}
       />
+      <AdBanner320x50 />
 
       {/* Hero Section */}
       <HeroSection
