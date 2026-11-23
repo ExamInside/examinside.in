@@ -30,12 +30,14 @@ export default function AdBanner320x50() {
     };
 
     const script = document.createElement("script");
-    script.src = "https://bicea.org/22/806c28d8f53fb3f13eb7e6bf3e95941a";
+    script.src = "https://bicea.org/22/806c28d8f53fb0f13eb7e6bf3e95941a";
     script.async = true;
 
-    container.appendChild(script);
+    const target = document.body || document.head;
+    target.appendChild(script);
 
     return () => {
+      script.remove();
       container.innerHTML = "";
     };
   }, []);
