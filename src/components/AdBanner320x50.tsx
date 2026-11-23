@@ -1,5 +1,17 @@
 import { useEffect, useRef } from "react";
 
+declare global {
+  interface Window {
+    atOptions?: {
+      key: string;
+      format: string;
+      height: number;
+      width: number;
+      params: Record<string, unknown>;
+    };
+  }
+}
+
 export default function AdBanner320x50() {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -9,8 +21,8 @@ export default function AdBanner320x50() {
 
     container.innerHTML = "";
 
-    (window as unknown as { atOptions?: Record<string, unknown> }).atOptions = {
-      key: "606c26df53f6bf3d67e6bf3e95941a",
+    window.atOptions = {
+      key: "806c28d8f53fb0f13eb7e6bf3e95941a",
       format: "iframe",
       height: 50,
       width: 320,
@@ -18,7 +30,7 @@ export default function AdBanner320x50() {
     };
 
     const script = document.createElement("script");
-    script.src = "https://bicea.org/22/606c26df53f6bf3d67e6bf3e95941a.js";
+    script.src = "https://bicea.org/22/806c28d8f53fb3f13eb7e6bf3e95941a";
     script.async = true;
 
     container.appendChild(script);
@@ -31,7 +43,7 @@ export default function AdBanner320x50() {
   return (
     <div
       ref={containerRef}
-      className="my-3 flex min-h-[50px] w-full items-center justify-center overflow-hidden"
+      className="my-3 flex min-h-[50px] w-full items-center justify-center overflow-hidden md:hidden"
     />
   );
 }
