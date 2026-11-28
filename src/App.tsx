@@ -163,7 +163,21 @@ const [showExamHub, setShowExamHub] = useState(false);
   useEffect(() => {
     savePacksState(packsState);
   }, [packsState]);
+useEffect(() => {
+  if (!showExamHub || typeof window === 'undefined') return;
 
+  window.history.pushState({ examHubOpen: true }, '');
+
+  const handlePopState = () => {
+    setShowExamHub(false);
+  };
+
+  window.addEventListener('popstate', handlePopState);
+  return () => {
+    window.removeEventListener('popstate', handlePopState);
+  };
+}, [showExamHub]);
+    
   const clearAdminUrlParams = () => {
     if (typeof window === 'undefined') return;
     const url = new URL(window.location.href);
