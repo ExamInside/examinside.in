@@ -540,15 +540,21 @@ useEffect(() => {
         onSearchChange={setSearchQuery}
         filteredCount={displayedSubjects.length}
       />
-<div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-3 flex justify-end">
+<div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-3 flex items-center justify-end gap-2">
+  <span className="flex items-center gap-1 text-xs font-semibold text-amber-300">
+    <span>Click here</span>
+    <span className="inline-block animate-bounce">→</span>
+  </span>
+
   <button
     type="button"
     onClick={() => setShowExamHub(true)}
-    className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold cursor-pointer"
+    className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold animate-pulse transition-transform duration-200 hover:animate-none hover:scale-[1.02] active:scale-[0.98]"
   >
     7-Day Board Exam Hub
   </button>
 </div>
+      
           
       {/* Main Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
