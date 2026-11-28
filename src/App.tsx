@@ -58,6 +58,7 @@ import {
   upsertImportantQuestionInPack,
 } from './utils/syllabusPackManager';
 import AdBanner320x50 from "./components/AdBanner320x50";
+import { BoardExamHub } from './examtest/BoardExamHub';
 
 export default function App() {
   const [darkMode, setDarkMode] = useState<boolean>(() => {
@@ -90,7 +91,8 @@ export default function App() {
   );
   const [isAdminAuthOpen, setIsAdminAuthOpen] = useState<boolean>(false);
   const [isSyllabusManagerOpen, setIsSyllabusManagerOpen] = useState<boolean>(false);
-
+const [showExamHub, setShowExamHub] = useState(false);
+         
   const activePack = useMemo(
     () =>
       packsState.packs.find((p) => p.id === packsState.activePackId) ||
@@ -524,10 +526,24 @@ export default function App() {
         onSearchChange={setSearchQuery}
         filteredCount={displayedSubjects.length}
       />
-
+<div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-3 flex justify-end">
+  <button
+    type="button"
+    onClick={() => setShowExamHub(true)}
+    className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold cursor-pointer"
+  >
+    7-Day Board Exam Hub
+  </button>
+</div>
+          
       {/* Main Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
         {/* Section 1: 6 Subject Cards per Class with Line-by-Line Clickable Chapters */}
+      {showExamHub ? (
+  <BoardExamHub onBack={() => setShowExamHub(false)} />
+) : (
+  <>
+    
         <section id="dashboard" className="space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200 dark:border-slate-800 pb-3">
             <div>
@@ -633,7 +649,10 @@ export default function App() {
             selectedClass={selectedClass}
           />
         </section>
-      </main>
+        </>
+  )}
+        
+  </main>
 
       {/* Footer */}
       <Footer
